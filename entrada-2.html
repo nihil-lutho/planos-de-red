@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Las etiquetas básicas de HTML5 que practicamos en el laboratorio de clase.">
+  <meta name="author" content="Maykol Alejandro Riveros Navarrete">
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <title>Anatomía de una página HTML5 · Planos de Red</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor">
+      <a class="logo" href="index.html"><span class="logo-marca">&lt;/&gt;</span>Planos de Red</a>
+      <nav aria-label="Navegación principal">
+        <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="entrada-1.html">Winchester</a></li>
+        <li><a href="entrada-2.html" aria-current="page">HTML5</a></li>
+        <li><a href="entrada-3.html">Componentes</a></li>
+        <li><a href="acerca.html">Acerca de</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="articulo contenedor">
+      <header class="articulo-cabecera">
+        <p class="miga"><a href="index.html">Inicio</a> / Entrada 2</p>
+        <p class="etiqueta">Laboratorio de HTML5</p>
+        <h1>Anatomía de una página HTML5</h1>
+        <p class="meta"><span>20 de octubre de 2026</span><span>Lectura: 7 min</span></p>
+      </header>
+
+      <figure class="figura">
+        <img src="archivos/html5-estructura.svg" alt="Esquema de una página web con las zonas header, nav, main con dos article, aside y footer." width="800" height="480">
+        <figcaption>Fig. 2 · Zonas semánticas de una página HTML5.</figcaption>
+      </figure>
+
+      <div class="cuerpo">
+        <h2>HTML no es un lenguaje de programación</h2>
+        <p>HTML (<i>HyperText Markup Language</i>) es un <strong>lenguaje de marcado</strong>: no tiene variables ni lógica, solo describe la estructura del contenido mediante etiquetas. Es un estándar, así que cualquier navegador interpreta las mismas etiquetas de la misma forma. CSS se encarga del diseño y JavaScript de la interactividad.</p>
+
+        <h2>El esqueleto mínimo</h2>
+        <p>Todo documento tiene la misma estructura: <code>html</code> envuelve todo, <code>head</code> guarda la información del documento y <code>body</code> lo que se ve en el navegador.</p>
+<pre class="codigo"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Documento de saludo&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hola mundo&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <p>El archivo se guarda como <code>index.html</code> y se abre con el navegador. Para ver el código de cualquier página se usa <code>Ctrl + U</code>, y para inspeccionarla, <code>Ctrl + Shift + I</code>.</p>
+
+        <h2>Encabezados del h1 al h6</h2>
+        <p>Entre menor es el número, mayor es la importancia y el tamaño del título:</p>
+        <h3>Esto es un h3</h3>
+        <h4>Esto es un h4</h4>
+        <h5>Esto es un h5</h5>
+        <h6>Esto es un h6</h6>
+
+        <h2>Dar formato al texto</h2>
+        <ul>
+          <li><code>&lt;b&gt;</code> pone el texto en <b>negrita</b>.</li>
+          <li><code>&lt;strong&gt;</code> también lo muestra en negrita, pero además le da <strong>importancia</strong> semántica.</li>
+          <li><code>&lt;i&gt;</code> lo pone en <i>itálica</i>.</li>
+          <li><code>&lt;span&gt;</code> marca un fragmento para darle <span style="color: var(--marca); font-weight: 600;">estilo propio</span>.</li>
+          <li><code>&lt;br&gt;</code> hace un salto de línea; no necesita etiqueta de cierre.<br>Esta frase empieza después de un <code>br</code>.</li>
+        </ul>
+
+        <h2>El problema de las tildes</h2>
+        <p>En el laboratorio, las palabras con tilde salían con caracteres raros. Hay dos soluciones: declarar <code>&lt;meta charset="UTF-8"&gt;</code> dentro del <code>head</code> (la que usa este blog) o escribir entidades HTML como <code>&amp;aacute;</code> para la á o <code>&amp;ntilde;</code> para la ñ. Así se ve una palabra escrita con entidades: Programaci&oacute;n en espa&ntilde;ol.</p>
+
+        <h2>Enlaces e imágenes</h2>
+        <p>Con <code>&lt;a href="…"&gt;</code> se crea un hipervínculo. Si se agrega <code>target="_blank"</code> la página se abre en una pestaña nueva y el blog sigue abierto. Por ejemplo, la <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" rel="noopener">documentación de HTML en MDN</a>.</p>
+        <p>Las imágenes se insertan con <code>&lt;img src="…"&gt;</code>. La ruta puede apuntar a una carpeta local, como <code>archivos/html5-estructura.svg</code> en este blog, o a una dirección de Internet. Con <code>width</code> y <code>height</code> se ajusta el tamaño:</p>
+        <img src="archivos/html5-estructura.svg" alt="Versión reducida del esquema HTML5" width="320" height="192">
+      </div>
+
+      <div class="cajetin" aria-label="Datos de la entrada">
+        <div><span>Entrada</span><strong>N.º 2</strong></div>
+        <div><span>Fecha</span><strong>20/10/2026</strong></div>
+        <div><span>Tema</span><strong>HTML5</strong></div>
+        <div><span>Etiquetas</span><strong>h1–h6, a, img</strong></div>
+      </div>
+      <nav class="paginacion" aria-label="Otras entradas">
+        <a href="entrada-1.html">← El síndrome de la Casa Winchester</a>
+        <a href="entrada-3.html">Componentes e interfaces →</a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <span>Planos de Red · Bitácora de Desarrollo de Aplicaciones en Red · 2026</span>
+      <span>Hecho a mano con HTML5 y CSS3</span>
+    </div>
+  </footer>
+</body>
+</html>

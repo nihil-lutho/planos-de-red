@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Programación orientada a componentes, interfaces provistas y requeridas.">
+  <meta name="author" content="Maykol Alejandro Riveros Navarrete">
+  <meta name="claude:viewport-fit-sides" content="cover">
+  <title>Divide y vencerás: componentes · Planos de Red</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=IBM+Plex+Mono:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor">
+      <a class="logo" href="index.html"><span class="logo-marca">&lt;/&gt;</span>Planos de Red</a>
+      <nav aria-label="Navegación principal">
+        <ul class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="entrada-1.html">Winchester</a></li>
+        <li><a href="entrada-2.html">HTML5</a></li>
+        <li><a href="entrada-3.html" aria-current="page">Componentes</a></li>
+        <li><a href="acerca.html">Acerca de</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="articulo contenedor">
+      <header class="articulo-cabecera">
+        <p class="miga"><a href="index.html">Inicio</a> / Entrada 3</p>
+        <p class="etiqueta">Programación orientada a componentes</p>
+        <h1>Divide y vencerás: componentes e interfaces</h1>
+        <p class="meta"><span>27 de octubre de 2026</span><span>Lectura: 6 min</span></p>
+      </header>
+
+      <figure class="figura">
+        <img src="archivos/componentes.svg" alt="Diagrama UML: el componente BillingComponent requiere la interfaz PaymentGatewayInterface, que provee StripePaymentAdapter." width="800" height="480">
+        <figcaption>Fig. 3 · Interfaz provista (piruleta) e interfaz requerida (zócalo) en notación UML.</figcaption>
+      </figure>
+
+      <div class="cuerpo">
+        <h2>Del monolito a las piezas</h2>
+        <p>Antes, un equipo recibía los requerimientos, desaparecía seis meses y entregaba un sistema <b>monolítico</b>: todo en una sola pieza. Cuando algo fallaba, el error afectaba a todo el sistema, y cada cambio pequeño obligaba a mover muchas partes.</p>
+        <p>La evolución fue así:</p>
+        <ol>
+          <li><strong>Era estructurada:</strong> funciones, procedimientos y variables globales.</li>
+          <li><strong>Orientación a objetos:</strong> clases, encapsulamiento y herencia, pero con fuerte dependencia del código fuente.</li>
+          <li><strong>Componentes:</strong> unidades autónomas que se despliegan por separado y se conectan mediante interfaces explícitas.</li>
+        </ol>
+
+        <h2>¿Qué es un componente?</h2>
+        <p>Según Szyperski, un componente es <i>una unidad de composición con interfaces especificadas contractualmente y dependencias de contexto explícitas</i>. Oculta su implementación: quien lo usa solo conoce su contrato, como una caja negra que recibe una entrada y devuelve una salida.</p>
+
+        <h3>Interfaces provistas y requeridas</h3>
+        <ul>
+          <li><strong>Provista</strong> (piruleta en UML): lo que el componente ofrece a los demás.</li>
+          <li><strong>Requerida</strong> (zócalo o media luna): lo que el componente necesita del entorno para funcionar.</li>
+        </ul>
+
+        <h2>El ejemplo de clase en Python</h2>
+        <p>En el primer insumo, el componente de facturación necesita una pasarela de pagos, pero no sabe cuál. Solo conoce el contrato:</p>
+<pre class="codigo"><code>class PaymentGatewayInterface(ABC):          # interfaz requerida
+    @abstractmethod
+    def process_transaction(self, amount, account_id) -&gt; bool: ...
+
+class BillingComponent(BillingServiceInterface):
+    def __init__(self, payment_gateway: PaymentGatewayInterface):
+        self._payment_gateway = payment_gateway   # dependencia inyectada
+
+# Cableado en tiempo de ejecución
+gateway = StripePaymentAdapter()
+billing = BillingComponent(payment_gateway=gateway)
+billing.create_invoice(user_id="USR-102", amount=150.00)</code></pre>
+        <p>Si mañana se cambia Stripe por otra pasarela, basta con escribir otro adaptador que cumpla el mismo contrato. El componente de facturación no se modifica.</p>
+
+        <h2>Ventajas y riesgos</h2>
+        <div class="tabla-envoltura">
+          <table>
+            <thead><tr><th>Ventaja</th><th>Riesgo</th></tr></thead>
+            <tbody>
+              <tr><td>Mantenimiento: se reemplaza un módulo defectuoso sin tocar el resto.</td><td>Confianza en código de terceros que no se puede auditar.</td></tr>
+              <tr><td>Reutilización: pasarelas de pago, generadores de PDF o módulos de autenticación ya hechos.</td><td>Incompatibilidades cuando el proveedor cambia de versión.</td></tr>
+              <tr><td>Equipos que trabajan en paralelo sobre contratos definidos.</td><td>Algo de pérdida de rendimiento por las capas intermedias.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>La conclusión conecta con la primera entrada: los componentes funcionan cuando hay una <strong>arquitectura</strong> que dice cómo deben encajar. Sin ella, volvemos a la Casa Winchester.</p>
+      </div>
+
+      <div class="cajetin" aria-label="Datos de la entrada">
+        <div><span>Entrada</span><strong>N.º 3</strong></div>
+        <div><span>Fecha</span><strong>27/10/2026</strong></div>
+        <div><span>Tema</span><strong>Componentes</strong></div>
+        <div><span>Etiquetas</span><strong>interfaces, DI</strong></div>
+      </div>
+      <nav class="paginacion" aria-label="Otras entradas">
+        <a href="entrada-2.html">← Anatomía de una página HTML5</a>
+        <a href="acerca.html">Acerca del blog →</a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <span>Planos de Red · Bitácora de Desarrollo de Aplicaciones en Red · 2026</span>
+      <span>Hecho a mano con HTML5 y CSS3</span>
+    </div>
+  </footer>
+</body>
+</html>
