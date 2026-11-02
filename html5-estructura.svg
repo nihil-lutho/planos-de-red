@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480" font-family="DejaVu Sans Mono, monospace">
+  <defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#1d4a73" stroke-width="1"/></pattern></defs>
+  <rect width="800" height="480" fill="#0f2c48"/><rect width="800" height="480" fill="url(#g)"/>
+  <g fill="none" stroke="#e6f3fb" stroke-width="2">
+    <rect x="60" y="40" width="680" height="400" rx="6"/>
+    <line x1="60" y1="70" x2="740" y2="70"/>
+  </g>
+  <g fill="#e6f3fb"><circle cx="80" cy="55" r="5"/><circle cx="97" cy="55" r="5"/><circle cx="114" cy="55" r="5"/></g>
+  <text x="140" y="60" fill="#8fc9ea" font-size="12">index.html · &lt;meta charset="UTF-8"&gt;</text>
+  <g fill="#123a5c" stroke="#5cc4f0" stroke-width="1.6">
+    <rect x="80" y="86" width="640" height="54"/>
+    <rect x="80" y="150" width="640" height="34"/>
+    <rect x="80" y="194" width="440" height="180"/>
+    <rect x="530" y="194" width="190" height="180"/>
+    <rect x="80" y="384" width="640" height="40"/>
+  </g>
+  <g fill="#123a5c" stroke="#ff8a4c" stroke-width="1.4" stroke-dasharray="5 4">
+    <rect x="100" y="216" width="400" height="66"/><rect x="100" y="292" width="400" height="66"/>
+  </g>
+  <g fill="#e6f3fb" font-size="16" font-weight="bold">
+    <text x="100" y="119">&lt;header&gt;  &lt;h1&gt;</text>
+    <text x="100" y="173" font-size="14">&lt;nav&gt;  &lt;a href&gt;</text>
+    <text x="545" y="222" font-size="14">&lt;aside&gt;</text>
+    <text x="100" y="410" font-size="14">&lt;footer&gt;</text>
+  </g>
+  <g fill="#ff8a4c" font-size="13">
+    <text x="116" y="242">&lt;article&gt; &lt;h2&gt; &lt;p&gt;</text>
+    <text x="116" y="318">&lt;article&gt; &lt;img src&gt;</text>
+  </g>
+  <text x="96" y="211" fill="#8fc9ea" font-size="12">&lt;main&gt;</text>
+  <g stroke="#8fc9ea" stroke-width="2"><line x1="550" y1="250" x2="700" y2="250"/><line x1="550" y1="270" x2="680" y2="270"/><line x1="550" y1="290" x2="690" y2="290"/></g>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480" font-family="DejaVu Sans Mono, monospace">
+  <defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#1d4a73" stroke-width="1"/></pattern></defs>
+  <rect width="800" height="480" fill="#0f2c48"/><rect width="800" height="480" fill="url(#g)"/>
+  <!-- Componente facturacion -->
+  <g fill="#123a5c" stroke="#e6f3fb" stroke-width="2.2"><rect x="70" y="170" width="240" height="140" rx="4"/><rect x="520" y="170" width="220" height="140" rx="4"/></g>
+  <g fill="none" stroke="#e6f3fb" stroke-width="1.6">
+    <rect x="276" y="180" width="22" height="14"/><rect x="270" y="184" width="10" height="4"/><rect x="270" y="190" width="10" height="4"/>
+    <rect x="706" y="180" width="22" height="14"/><rect x="700" y="184" width="10" height="4"/><rect x="700" y="190" width="10" height="4"/>
+  </g>
+  <g fill="#e6f3fb" font-size="15" font-weight="bold" text-anchor="middle">
+    <text x="190" y="235">BillingComponent</text><text x="630" y="235">StripePayment</text><text x="630" y="255">Adapter</text>
+  </g>
+  <text x="190" y="258" fill="#8fc9ea" font-size="12" text-anchor="middle">facturación</text>
+  <text x="630" y="280" fill="#8fc9ea" font-size="12" text-anchor="middle">pasarela de pago</text>
+  <!-- interfaz provista (piruleta) en facturacion -->
+  <g stroke="#5cc4f0" stroke-width="2.2" fill="none"><line x1="190" y1="170" x2="190" y2="110"/><circle cx="190" cy="98" r="12"/></g>
+  <text x="190" y="72" fill="#5cc4f0" font-size="12" text-anchor="middle">BillingServiceInterface (provista)</text>
+  <!-- requerida (socket) facturacion -> provista (lollipop) stripe -->
+  <g stroke="#ff8a4c" stroke-width="2.2" fill="none">
+    <line x1="310" y1="240" x2="400" y2="240"/><path d="M412 222a18 18 0 0 0 0 36"/>
+  </g>
+  <g stroke="#5cc4f0" stroke-width="2.2" fill="none"><line x1="520" y1="240" x2="432" y2="240"/><circle cx="420" cy="240" r="12"/></g>
+  <text x="415" y="300" fill="#ff8a4c" font-size="12" text-anchor="middle">PaymentGatewayInterface</text>
+  <text x="415" y="318" fill="#8fc9ea" font-size="11" text-anchor="middle">contrato: process_transaction()</text>
+  <g font-size="12">
+    <rect x="70" y="380" width="14" height="14" fill="none" stroke="#5cc4f0" stroke-width="2"/><text x="94" y="392" fill="#e6f3fb">○ piruleta = interfaz provista</text>
+    <rect x="420" y="380" width="14" height="14" fill="none" stroke="#ff8a4c" stroke-width="2"/><text x="444" y="392" fill="#e6f3fb">◗ zócalo = interfaz requerida</text>
+  </g>
+  <text x="400" y="440" fill="#8fc9ea" font-size="12" text-anchor="middle">cableado en tiempo de ejecución: BillingComponent(payment_gateway=gateway)</text>
+</svg>
